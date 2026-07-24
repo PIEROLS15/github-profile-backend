@@ -19,6 +19,21 @@ async function bootstrapServer() {
 }
 
 export default async function handler(req: any, res: any) {
+  const requestUrl = typeof req?.url === 'string' ? req.url : '';
+
+  if (requestUrl === '/' || requestUrl === '/api' || requestUrl === '/api/') {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(
+      JSON.stringify({
+        status: 'ok',
+        endpoint: '/user/:username',
+        message: 'Use GET /user/:username to fetch a GitHub profile.',
+      }),
+    );
+    return;
+  }
+
   if (!cachedHandler) {
     cachedHandler = await bootstrapServer();
   }
