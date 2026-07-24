@@ -1,12 +1,16 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/",
-      "destination": "/api"
-    },
+      "src": "src/main.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
     {
-      "source": "/user/:username",
-      "destination": "/api/user/:username"
+      "src": "/(.*)",
+      "dest": "src/main.ts",
+      "methods": ["GET", "POST", "PUT", "PATCH", "HEAD", "DELETE", "OPTIONS"]
     }
   ]
 }
