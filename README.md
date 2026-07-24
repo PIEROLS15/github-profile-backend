@@ -1,6 +1,6 @@
 # Backend
 
-API NestJS del challenge de perfil de GitHub.
+API NestJS para obtener un perfil de GitHub.
 
 ## Endpoint
 
@@ -62,7 +62,6 @@ npm run start:dev
 
 - Las contribuciones se obtienen desde la página pública de GitHub por scraping HTML.
 - El README público del perfil se obtiene desde la API pública de GitHub.
-- El backend no usa base de datos ni autenticación de usuarios.
 
 ## Deploy
 
