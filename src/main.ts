@@ -3,7 +3,12 @@ import { loadEnvFile } from 'node:process';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  loadEnvFile('.env');
+  if (!process.env.VERCEL) {
+    try {
+      loadEnvFile('.env');
+    } catch {
+    }
+  }
   const app = await NestFactory.create(AppModule);
   app.enableCors({
     origin: true,
